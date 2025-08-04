@@ -1,0 +1,17 @@
+[variables]
+NIXPACKS_NO_MUSL = "1"
+
+# Use static file serving for WordPress
+[phases.setup]
+nixPkgs = ["php82", "php82Extensions.mysqli", "php82Extensions.gd", "php82Extensions.zip", "php82Extensions.curl", "php82Extensions.dom", "php82Extensions.exif", "php82Extensions.fileinfo", "php82Extensions.hash", "php82Extensions.json", "php82Extensions.mbstring", "php82Extensions.openssl", "php82Extensions.pcre", "php82Extensions.posix", "php82Extensions.sodium", "php82Extensions.xml", "php82Extensions.zip"]
+
+[phases.build]
+# Skip build phase to avoid file processing
+cmds = []
+
+[phases.start]
+cmd = "php -S 0.0.0.0:8080 -t ."
+
+[staticAssets]
+# Serve all files as static assets
+"/" = "./"

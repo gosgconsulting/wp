@@ -1,0 +1,10 @@
+# Ignore WordPress core files that may have encoding issues
+wp-includes/js/tw-sack.js
+wp-includes/js/swfobject.js
+wp-includes/js/swfupload/
+wp-includes/js/dist/
+wp-admin/js/
+wp-content/themes/
+wp-content/plugins/
+*.sql
+*.log

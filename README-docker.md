@@ -4,7 +4,7 @@ This Docker Compose configuration provides a complete WordPress development envi
 
 ## Services Included
 
-- **WordPress** (wordpress:latest) - Main WordPress application
+- **WordPress** (wordpress:php8.2-apache) - Main WordPress application (using specific PHP version to avoid UTF-8 encoding issues)
 - **MariaDB** (mariadb:10.11) - Database server
 - **Redis** (redis:7-alpine) - Caching and session storage
 - **phpMyAdmin** (optional) - Database management interface
@@ -117,6 +117,9 @@ docker-compose exec -T mariadb mysql -u wordpress -p wordpress < backup.sql
 - The current setup is intended for development; additional security measures needed for production
 
 ## Troubleshooting
+
+### UTF-8 Encoding Issues
+The configuration uses `wordpress:php8.2-apache` instead of `wordpress:latest` to avoid "stream did not contain valid UTF-8" build errors. The `NIXPACKS_NO_MUSL=1` environment variable is also set as an additional safeguard.
 
 ### WordPress can't connect to database
 - Ensure MariaDB container is running: `docker-compose ps`

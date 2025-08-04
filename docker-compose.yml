@@ -2,12 +2,13 @@ version: '3.8'
 
 services:
   wordpress:
-    image: wordpress:latest
+    image: wordpress:php8.2-apache
     container_name: wp_wordpress
     restart: unless-stopped
     ports:
       - "8080:80"
     environment:
+      NIXPACKS_NO_MUSL: 1
       WORDPRESS_DB_HOST: mariadb:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress_password
